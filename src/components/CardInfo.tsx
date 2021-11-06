@@ -37,7 +37,7 @@ export const CardInfo = ({temp, date, location}: CardInfoProps) => {
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    bottom: 16,
+    bottom: 48,
     left: 0,
     right: 0,
     alignItems: 'center',
