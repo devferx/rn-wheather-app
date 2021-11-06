@@ -1,5 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
 import {getDayString} from '../utils/getDayString';
 import {getMonthString} from '../utils/getMonthString';
 
@@ -12,7 +14,11 @@ type CardInfoProps = {
 export const CardInfo = ({temp, date, location}: CardInfoProps) => {
   return (
     <View style={styles.container}>
-      <View style={styles.cardInfo}>
+      <LinearGradient
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 0}}
+        colors={['#536976', '#292E49']}
+        style={styles.cardInfo}>
         <Text style={styles.tempText}>{temp}°</Text>
         <View style={styles.cardInfoContent}>
           <Text style={styles.infoContentText}>
@@ -23,7 +29,7 @@ export const CardInfo = ({temp, date, location}: CardInfoProps) => {
             {location}
           </Text>
         </View>
-      </View>
+      </LinearGradient>
     </View>
   );
 };

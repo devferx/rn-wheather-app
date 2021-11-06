@@ -1,12 +1,15 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {ImageBackground, StyleSheet} from 'react-native';
+
 import {CardInfo} from './src/components/CardInfo';
 
 const App = () => {
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require('./src/assets/bg.png')}
+      style={styles.container}>
       <CardInfo temp={25} date={new Date()} location="Cochabamba, Bolivia" />
-    </View>
+    </ImageBackground>
   );
 };
 
