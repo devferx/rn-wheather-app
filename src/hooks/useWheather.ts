@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
-import axios from 'axios';
 import {Alert} from 'react-native';
+import axios from 'axios';
 
 import {OneCallResp} from '../interfaces/oneCall';
 

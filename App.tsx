@@ -3,19 +3,21 @@ import {
   ActivityIndicator,
   ImageBackground,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {BottomSheetFlatList} from '@gorhom/bottom-sheet';
 
 import {CardInfo} from './src/components/CardInfo';
 import {BottomSheet} from './src/components/BottomSheet';
 import {useWheather} from './src/hooks/useWheather';
+import {BottomSheetFooter} from './src/components/BottomSheetFooter';
+import {HourlyItem} from './src/components/HourlyItem';
 
 const App = () => {
   const data = useWheather();
 
-  if (!data) {
+  if (!data || !data.daily || !data.current) {
     return (
       <View style={styles.centerContainer}>
         <ActivityIndicator color="#FF8906" size={55} />
@@ -34,7 +36,20 @@ const App = () => {
           location="Cochabamba, Bolivia"
         />
         <BottomSheet>
-          <Text style={{color: 'white'}}>Hello World</Text>
+          <BottomSheetFlatList
+            data={data.hourly}
+            horizontal
+            keyExtractor={item => item.dt.toString()}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({item}) => <HourlyItem data={item} />}
+          />
+
+          <BottomSheetFooter
+            max={data.daily[0].temp.max}
+            min={data.daily[0].temp.min}
+            humidity={data.current.humidity}
+            windSpeed={data.current.wind_speed}
+          />
         </BottomSheet>
       </ImageBackground>
     </GestureHandlerRootView>

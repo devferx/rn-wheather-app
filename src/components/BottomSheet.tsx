@@ -11,7 +11,7 @@ type BottomSheetProps = {
 export const BottomSheet = ({children}: BottomSheetProps) => {
   const bottomSheetRef = useRef<BottomSheetContainer>(null);
 
-  const snapPoints = useMemo(() => [32, '50%'], []);
+  const snapPoints = useMemo(() => [32, 250], []);
 
   return (
     <BottomSheetContainer
